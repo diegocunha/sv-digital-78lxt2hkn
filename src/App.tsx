@@ -4,8 +4,12 @@ import { Toaster } from '@/components/ui/toaster'
 import { Toaster as Sonner } from '@/components/ui/sonner'
 import { TooltipProvider } from '@/components/ui/tooltip'
 import { AuthProvider } from '@/hooks/use-auth'
+import { PapelProvider } from '@/hooks/use-papel'
 import Index from './pages/Index'
 import Login from './pages/Login'
+import Contas from './pages/Contas'
+import Correcoes from './pages/Correcoes'
+import Painel from './pages/Painel'
 import NotFound from './pages/NotFound'
 import Layout from './components/Layout'
 
@@ -15,17 +19,22 @@ import Layout from './components/Layout'
 const App = () => (
   <BrowserRouter>
     <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <Routes>
-          <Route element={<Layout />}>
-            <Route path="/" element={<Index />} />
-            <Route path="/login" element={<Login />} />
-          </Route>
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </TooltipProvider>
+      <PapelProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<Index />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/contas" element={<Contas />} />
+              <Route path="/correcoes" element={<Correcoes />} />
+              <Route path="/painel" element={<Painel />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </TooltipProvider>
+      </PapelProvider>
     </AuthProvider>
   </BrowserRouter>
 )
